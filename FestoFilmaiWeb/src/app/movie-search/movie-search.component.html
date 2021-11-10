@@ -1,0 +1,21 @@
+<div>
+    <input type="text" ng-model="searchBox">
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>IMDB Rating</th>
+            <th>Short plot</th>
+            <th>Actors</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let movie of movies">
+            <td>{{movie.Title}}</td>
+        </tr>
+    </tbody>
+</table>
