@@ -7,11 +7,13 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { FestoFilmaiAPIServiceService } from './festo-filmai-apiservice.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieSearchComponent
+    MovieSearchComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,

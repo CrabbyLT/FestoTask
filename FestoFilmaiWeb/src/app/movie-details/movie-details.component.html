@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Poster</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>IMDB Rating</th>
+            <th>Short plot</th>
+            <th>Actors</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td><img [src]="movie.poster" onerror="this.src='assets/placeholder.png';" height="300px" width="180px"></td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.year}}</td>
+        <td>{{movie.genre}}</td>
+        <td>{{movie.imdbRating}}</td>
+        <td>{{movie.plot}}</td>
+        <td>{{movie.actors}}</td>
+    </tbody>
+</table>

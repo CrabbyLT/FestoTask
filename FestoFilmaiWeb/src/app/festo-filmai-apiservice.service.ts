@@ -6,11 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FestoFilmaiAPIServiceService {
-  readonly baseUrl = 'http://localhost:5001/api/';
+  readonly baseUrl = 'https://localhost:5001/api/';
 
   constructor(private http: HttpClient) { }
 
   getMovies(title: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}movies?title=${title}`);
+    return this.http.get<any>(`${this.baseUrl}Movies/${title}`);
+  }
+
+  getMovie(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Movies/Movie/${id}`);
   }
 }
