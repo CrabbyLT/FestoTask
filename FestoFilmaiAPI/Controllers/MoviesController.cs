@@ -25,9 +25,9 @@ namespace FestoFilmaiAPI.Controllers
 
         [HttpGet("{movieName}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<SearchResultModel>))]
-        public async Task<IActionResult> GetMoviesSorted(string movieName, [FromQuery] int page = 1)
+        public async Task<IActionResult> GetMoviesSorted(string movieName, [FromQuery] int page = 1, [FromQuery] int year = 0)
         {
-            var sortedMoviesList = await _moviesService.GetMoviesSorted(movieName, page);
+            var sortedMoviesList = await _moviesService.GetMoviesSorted(movieName, page, year);
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return Ok(sortedMoviesList);
         }

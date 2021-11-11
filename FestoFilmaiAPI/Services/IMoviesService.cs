@@ -6,7 +6,7 @@ namespace FestoFilmaiAPI.Services
 {
     public interface IMoviesService
     {
-        Task<IEnumerable<SearchResultModel>> GetMoviesSorted(string movieName, int page);
+        Task<IEnumerable<SearchResultModel>> GetMoviesSorted(string movieName, int page, int year);
         Task<MovieModel> GetDetailsFromId(string id);
     }
 }

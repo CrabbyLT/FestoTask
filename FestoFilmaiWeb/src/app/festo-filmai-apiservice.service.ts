@@ -14,6 +14,10 @@ export class FestoFilmaiAPIServiceService {
     return this.http.get<any>(`${this.baseUrl}Movies/${title}/?page=${page}`);
   }
 
+  getMoviesByYear(title: string, year: number, page: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Movies/${title}/?page=${page}&year=${year}`);
+  }
+
   getMovie(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Movies/Movie/${id}`);
   }

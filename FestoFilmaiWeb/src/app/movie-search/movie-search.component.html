@@ -2,17 +2,46 @@
     <input [(ngModel)]="movieName" type="text" 
         id="searchKey" class="form-control"
         placeholder="Search Box" />
-    <span class="input-group-btn">
-        <button type="button"
-        class="btn btn-primary"
-        (click)="doSearch()">
-            Search
-        </button>
-    </span>
+
+        <span class="input-group-btn">
+            <button type="button"
+            class="btn btn-primary"
+            (click)="doSearch()">
+                    Search
+            </button>
+        </span>
+
+
+    <input [(ngModel)]="movieYear" type="number" min="1900" max="2099" step="1"
+        id="searchKey" class="form-control"
+        placeholder="Filter by year" />
+
+        <span class="input-group-btn">
+            <button type="button"
+            class="btn btn-primary"
+            (click)="filterMovies()">
+                    Filter
+            </button>
+        </span>
+
+        <span class="input-group-btn">
+            <button type="button"
+            class="btn btn-danger"
+            (click)="clearFilters()">
+                    Clear filters
+            </button>
+        </span>
+    
 </div>
 
 <div >
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Poster</th>
+                <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+                <th scope="col" sortable="year" (sort)="onSort($event)">Year</th>
+        </thead>
         <tbody>
             <tr *ngFor="let movie of movies">
                 <td><img [src]="movie.poster" onerror="this.src='assets/placeholder.png';" height="300px" width="180px"></td>

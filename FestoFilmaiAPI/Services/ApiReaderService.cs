@@ -36,9 +36,19 @@ namespace FestoFilmaiAPI.Services
             throw new Exception("not found");
         }
 
-        public async Task<List<SearchResultModel>> GetSearchResult(string searchQuery, int page)
+        public async Task<List<SearchResultModel>> GetSearchResult(string searchQuery, int page, int year)
         {
-            HttpResponseMessage httpResponse = await _client.GetAsync($"?s={searchQuery}&page={page}" + URLParams);
+            HttpResponseMessage httpResponse = new HttpResponseMessage();
+
+            if (year != 0)
+            {
+                httpResponse = await _client.GetAsync($"?s={searchQuery}&y={year}" + URLParams);
+            }
+            else
+            {
+                httpResponse = await _client.GetAsync($"?s={searchQuery}" + URLParams);
+            }
+
             if (httpResponse.IsSuccessStatusCode)
             {
                 var json = await httpResponse.Content.ReadAsStringAsync();

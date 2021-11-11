@@ -36,12 +36,12 @@ namespace FestoFilmaiAPI.Services
             return result;
         }
 
-        public async Task<IEnumerable<SearchResultModel>> GetMoviesSorted(string searchQuery, int page)
+        public async Task<IEnumerable<SearchResultModel>> GetMoviesSorted(string searchQuery, int page, int year)
         {
             var result = await _movieSearchRepository.GetSearchResultModels(searchQuery, page);
             if (!result.Any())
             {
-                result = await _apiReaderService.GetSearchResult(searchQuery, page);
+                result = await _apiReaderService.GetSearchResult(searchQuery, page, year);
                 if (result is not null)
                 {
                     await _movieSearchRepository.InsertSearchResultsToRepositoryAsync((List<SearchResultModel>)result);
