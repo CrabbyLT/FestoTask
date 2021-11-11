@@ -21,6 +21,11 @@ namespace FestoFilmaiAPI.Models
 
         [JsonProperty("imdbRating")]
         public string ImdbRating { get; set; }
+
+        [JsonProperty("imdbID")]
         public string ImdbId { get; set; }
+
+        [JsonProperty("Poster")]
+        public string Poster { get; set; }
     }
 }
