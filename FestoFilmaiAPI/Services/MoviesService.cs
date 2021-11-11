@@ -29,7 +29,7 @@ namespace FestoFilmaiAPI.Services
             var result = await _movieDetailRepository.GetMovieFromRepository(id);
             if (result is null)
             {
-                result = await _apiReaderService.GetMovieOrSeriesDetailsById(id);
+                result = await _apiReaderService.GetMovieDetails(id);
                 await _movieDetailRepository.InsertDataToRepository(result);
             }
 

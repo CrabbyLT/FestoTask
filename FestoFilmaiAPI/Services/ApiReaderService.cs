@@ -23,7 +23,7 @@ namespace FestoFilmaiAPI.Services
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<MovieModel> GetMovieOrSeriesDetailsById(string id)
+        public async Task<MovieModel> GetMovieDetails(string id)
         {
 
             HttpResponseMessage httpResponse = await _client.GetAsync($"?i={id}" + URLParams);
@@ -38,8 +38,7 @@ namespace FestoFilmaiAPI.Services
 
         public async Task<List<SearchResultModel>> GetSearchResult(string searchQuery, int page, int year)
         {
-            HttpResponseMessage httpResponse = new HttpResponseMessage();
-
+            HttpResponseMessage httpResponse;
             if (year != 0)
             {
                 httpResponse = await _client.GetAsync($"?s={searchQuery}&y={year}" + URLParams);
