@@ -13,7 +13,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
   declarations: [
     AppComponent,
     MovieSearchComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,

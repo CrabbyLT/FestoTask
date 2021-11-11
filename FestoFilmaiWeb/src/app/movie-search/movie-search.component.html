@@ -1,16 +1,36 @@
-
-<div class="searchBox">
-    <input (keyup)="searchMovies()" 
-        [(ngModel)]="movieName" type="text" 
+<div class="input-group">
+    <input [(ngModel)]="movieName" type="text" 
         id="searchKey" class="form-control"
         placeholder="Search Box" />
+    <span class="input-group-btn">
+        <button type="button"
+        class="btn btn-primary"
+        (click)="doSearch()">
+            Search
+        </button>
+    </span>
 </div>
 
-<table class="table table-striped">
-    <tbody>
-        <tr *ngFor="let movie of movies">
-            <td><img [src]="movie.poster" onerror="this.src='assets/placeholder.png';" height="300px" width="180px"></td>
-            <td><a routerLink='../movie-details/{{movie.imdbID}}'>{{movie.title}}</a></td>
-        </tr>
-    </tbody>
-</table>
+<div >
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let movie of movies">
+                <td><img [src]="movie.poster" onerror="this.src='assets/placeholder.png';" height="300px" width="180px"></td>
+                <td><a routerLink='../movie-details/{{movie.imdbID}}'>{{movie.title}}</a></td>
+                <td>{{movie.year}}</td>
+                <td>{{movie.genre}}</td>
+                <td>{{movie.imdbRating}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="/movie-search;movieName={{movieName}};page={{page - 1}}">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="/movie-search;movieName={{movieName}};page=1">1</a></li>
+      <li class="page-item"><a class="page-link" href="/movie-search;movieName={{movieName}};page=2">2</a></li>
+      <li class="page-item"><a class="page-link" href="/movie-search;movieName={{movieName}};page=3">3</a></li>
+      <li class="page-item"><a class="page-link" href="/movie-search;movieName={{movieName}};page={{page*1 +1}}">Next</a></li>
+    </ul>
+  </nav>

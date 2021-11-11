@@ -10,8 +10,8 @@ export class FestoFilmaiAPIServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getMovies(title: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}Movies/${title}`);
+  getMovies(title: string, page: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Movies/${title}/?page=${page}`);
   }
 
   getMovie(id: string): Observable<any> {

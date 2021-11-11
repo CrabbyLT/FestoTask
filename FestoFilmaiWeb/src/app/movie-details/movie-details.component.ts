@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FestoFilmaiAPIServiceService } from '../festo-filmai-apiservice.service';
 import { ActivatedRoute } from '@angular/router';
 
