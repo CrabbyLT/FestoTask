@@ -1,5 +1,6 @@
 ﻿using FestoFilmaiAPI.Models;
 using FestoFilmaiAPI.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace FestoFilmaiAPI.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
+    [EnableCors()]
     [ApiController]
     public class MoviesController : ControllerBase
     {
@@ -26,7 +28,7 @@ namespace FestoFilmaiAPI.Controllers
         public async Task<IActionResult> GetMoviesSorted(string movieName, [FromQuery] int page = 1)
         {
             var sortedMoviesList = await _moviesService.GetMoviesSorted(movieName, page);
-
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return Ok(sortedMoviesList);
         }
 
@@ -35,7 +37,7 @@ namespace FestoFilmaiAPI.Controllers
         public async Task<IActionResult> GetMovieDetails(string id)
         {
             var movieDetail = await _moviesService.GetDetailsFromId(id);
-
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return Ok(movieDetail);
         }
     }

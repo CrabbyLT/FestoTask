@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FestoFilmaiAPI.Repository;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FestoFilmaiAPI.Services
 {
@@ -38,10 +39,13 @@ namespace FestoFilmaiAPI.Services
         public async Task<IEnumerable<SearchResultModel>> GetMoviesSorted(string searchQuery, int page)
         {
             var result = await _movieSearchRepository.GetSearchResultModels(searchQuery, page);
-            if (result is null)
+            if (!result.Any())
             {
                 result = await _apiReaderService.GetSearchResult(searchQuery, page);
-                await _movieSearchRepository.InsertSearchResultsToRepositoryAsync((List<SearchResultModel>)result);
+                if (result is not null)
+                {
+                    await _movieSearchRepository.InsertSearchResultsToRepositoryAsync((List<SearchResultModel>)result);
+                }
             }
 
             return result;
